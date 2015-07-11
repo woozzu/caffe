@@ -1,7 +1,7 @@
 #include <glog/logging.h>
 #include <cstdio>
 #include <ctime>
-
+#include <process.h>
 #include "caffe/common.hpp"
 #include "caffe/util/rng.hpp"
 
@@ -22,8 +22,11 @@ int64_t cluster_seedgen(void) {
               "using fallback algorithm to generate seed instead.";
   if (f)
     fclose(f);
-
+#ifndef _MSC_VER
   pid = getpid();
+#else
+  pid = _getpid();
+#endif
   s = time(NULL);
   seed = abs(((s * 181) * ((pid - 83) * 359)) % 104729);
   return seed;
@@ -36,7 +39,7 @@ void GlobalInit(int* pargc, char*** pargv) {
   // Google logging.
   ::google::InitGoogleLogging(*(pargv)[0]);
   // Provide a backtrace on segfault.
-  ::google::InstallFailureSignalHandler();
+  //::google::InstallFailureSignalHandler();
 }
 
 #ifdef CPU_ONLY  // CPU-only Caffe.
