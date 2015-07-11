@@ -20,6 +20,11 @@
 
 #include "caffe/proto/caffe.pb.h"
 
+#ifdef _MSC_VER
+#include <direct.h>
+#define snprintf sprintf_s
+#endif
+
 using namespace caffe;  // NOLINT(build/namespaces)
 using std::string;
 
@@ -61,12 +66,12 @@ void convert_dataset(const char* image_filename, const char* label_filename,
   cols = swap_endian(cols);
 
   // lmdb
-  MDB_env *mdb_env;
+  MDB_env *mdb_env = NULL;
   MDB_dbi mdb_dbi;
   MDB_val mdb_key, mdb_data;
-  MDB_txn *mdb_txn;
+  MDB_txn *mdb_txn = NULL;
   // leveldb
-  leveldb::DB* db;
+  leveldb::DB* db = NULL;
   leveldb::Options options;
   options.error_if_exists = true;
   options.create_if_missing = true;
@@ -83,8 +88,13 @@ void convert_dataset(const char* image_filename, const char* label_filename,
     batch = new leveldb::WriteBatch();
   } else if (db_backend == "lmdb") {  // lmdb
     LOG(INFO) << "Opening lmdb " << db_path;
+#ifndef _MSC_VER
     CHECK_EQ(mkdir(db_path, 0744), 0)
         << "mkdir " << db_path << "failed";
+#else
+	CHECK_EQ(_mkdir(db_path), 0)
+		<< "mkdir " << db_path << "failed";
+#endif
     CHECK_EQ(mdb_env_create(&mdb_env), MDB_SUCCESS) << "mdb_env_create failed";
     CHECK_EQ(mdb_env_set_mapsize(mdb_env, 1099511627776), MDB_SUCCESS)  // 1TB
         << "mdb_env_set_mapsize failed";
