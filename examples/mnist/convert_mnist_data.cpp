@@ -99,7 +99,7 @@ void convert_dataset(const char* image_filename, const char* label_filename,
     CHECK_EQ(mdb_env_create(&mdb_env), MDB_SUCCESS) << "mdb_env_create failed";
 #ifdef _MSC_VER
     SYSTEM_INFO si;
-    GetSystemInfo(&si);
+    GetNativeSystemInfo(&si);
     const size_t mapSize = static_cast<size_t>(si.dwPageSize) * 10000000;  // 40GB
     CHECK_EQ(mdb_env_set_mapsize(mdb_env, mapSize), MDB_SUCCESS)
         << "mdb_env_set_mapsize failed";

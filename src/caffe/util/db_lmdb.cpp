@@ -6,6 +6,7 @@
 
 #ifdef _MSC_VER
 #include <direct.h>
+#include <windows.h>
 #endif
 
 namespace caffe { namespace db {
@@ -14,7 +15,14 @@ const size_t LMDB_MAP_SIZE = 1099511627776;  // 1 TB
 
 void LMDB::Open(const string& source, Mode mode) {
   MDB_CHECK(mdb_env_create(&mdb_env_));
+#ifdef _MSC_VER
+  SYSTEM_INFO si;
+  GetNativeSystemInfo(&si);
+  const size_t mapSize = static_cast<size_t>(si.dwPageSize) * 10000000;  // 40GB
+  MDB_CHECK(mdb_env_set_mapsize(mdb_env_, mapSize));
+#else
   MDB_CHECK(mdb_env_set_mapsize(mdb_env_, LMDB_MAP_SIZE));
+#endif
   if (mode == NEW) {
 #ifndef _MSC_VER
     CHECK_EQ(mkdir(source.c_str(), 0744), 0) << "mkdir " << source << "failed";
