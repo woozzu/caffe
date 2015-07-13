@@ -4,8 +4,8 @@ set EXAMPLE=examples/mnist
 set DATA=data/mnist
 set BUILD=bin
 
-REM set BACKEND=lmdb
-set BACKEND=leveldb
+set BACKEND=lmdb
+REM set BACKEND=leveldb
 
 echo "Creating %BACKEND%..."
 

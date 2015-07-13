@@ -22,6 +22,7 @@
 
 #ifdef _MSC_VER
 #include <direct.h>
+#include <windows.h>
 #define snprintf sprintf_s
 #endif
 
@@ -96,8 +97,16 @@ void convert_dataset(const char* image_filename, const char* label_filename,
 		<< "mkdir " << db_path << "failed";
 #endif
     CHECK_EQ(mdb_env_create(&mdb_env), MDB_SUCCESS) << "mdb_env_create failed";
+#ifdef _MSC_VER
+    SYSTEM_INFO si;
+    GetSystemInfo(&si);
+    const size_t mapSize = static_cast<size_t>(si.dwPageSize) * 10000000;  // 40GB
+    CHECK_EQ(mdb_env_set_mapsize(mdb_env, mapSize), MDB_SUCCESS)
+        << "mdb_env_set_mapsize failed";
+#else
     CHECK_EQ(mdb_env_set_mapsize(mdb_env, 1099511627776), MDB_SUCCESS)  // 1TB
         << "mdb_env_set_mapsize failed";
+#endif
     CHECK_EQ(mdb_env_open(mdb_env, db_path, 0, 0664), MDB_SUCCESS)
         << "mdb_env_open failed";
     CHECK_EQ(mdb_txn_begin(mdb_env, NULL, 0, &mdb_txn), MDB_SUCCESS)
@@ -176,6 +185,15 @@ void convert_dataset(const char* image_filename, const char* label_filename,
     }
     LOG(ERROR) << "Processed " << count << " files.";
   }
+#ifdef _MSC_VER
+  else {
+    if (db_backend == "lmdb") {
+      mdb_close(mdb_env, mdb_dbi);
+      mdb_env_close(mdb_env);
+    }
+    LOG(ERROR) << "Processed " << count << " files.";
+  }
+#endif
   delete pixels;
 }
 
