@@ -18,7 +18,7 @@ void LMDB::Open(const string& source, Mode mode) {
 #ifdef _MSC_VER
   SYSTEM_INFO si;
   GetNativeSystemInfo(&si);
-  const size_t mapSize = static_cast<size_t>(si.dwPageSize) * 10000000;  // 40GB
+  const size_t mapSize = static_cast<size_t>(si.dwPageSize) * 100000000;  // 400GB
   MDB_CHECK(mdb_env_set_mapsize(mdb_env_, mapSize));
 #else
   MDB_CHECK(mdb_env_set_mapsize(mdb_env_, LMDB_MAP_SIZE));
