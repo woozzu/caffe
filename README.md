@@ -1,34 +1,30 @@
-# Caffe
+# Caffe for Windows
 
 Caffe is a deep learning framework made with expression, speed, and modularity in mind.
 It is developed by the Berkeley Vision and Learning Center ([BVLC](http://bvlc.eecs.berkeley.edu)) and community contributors.
 
-Check out the [project site](http://caffe.berkeleyvision.org) for all the details like
+This branch is for Windows using Visual Studio 2013.
 
-- [DIY Deep Learning for Vision with Caffe](https://docs.google.com/presentation/d/1UeKXVgRvvxg9OUdh_UiC5G71UMscNPlvArsWER41PsU/edit#slide=id.p)
-- [Tutorial Documentation](http://caffe.berkeleyvision.org/tutorial/)
-- [BVLC reference models](http://caffe.berkeleyvision.org/model_zoo.html) and the [community model zoo](https://github.com/BVLC/caffe/wiki/Model-Zoo)
-- [Installation instructions](http://caffe.berkeleyvision.org/installation.html)
+# Step 1
+We need following external libraries to build caffe.
+- CUDA 7.0 + cuDNN
+- OpenCV 2.4.8
+- [Boost 1.56](http://sourceforge.net/projects/boost/files/boost-binaries/1.56.0/boost_1_56_0-msvc-12.0-64.exe/download)
+- OpenBLAS (in 3rdparty)
+- GFlags, GLog, Protobuf (in 3rdparty)
+- LevelDB, LMDB, HDF5 (in 3rdparty)
 
-and step-by-step examples.
+You can download pre-built 3rd party libraries here.
+https://www.dropbox.com/s/v038gymle57kn7d/3rdparty.zip?dl=0
 
-[![Join the chat at https://gitter.im/BVLC/caffe](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/BVLC/caffe?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+# Step 2
+Checkout if following environment variables are set.
+- CUDA_PATH_V7_0
+- OPENCV_HOME (like D:\dev\opencv)
+- BOOST_1_56_0 (like D:\dev\boost_1_56_0)
+- Path (Add D:\dev\opencv\build\x64\vc12\bin;D:\dev\caffe\3rdparty\bin)
 
-Please join the [caffe-users group](https://groups.google.com/forum/#!forum/caffe-users) or [gitter chat](https://gitter.im/BVLC/caffe) to ask questions and talk about methods and models.
-Framework development discussions and thorough bug reports are collected on [Issues](https://github.com/BVLC/caffe/issues).
-
-Happy brewing!
-
-## License and Citation
-
-Caffe is released under the [BSD 2-Clause license](https://github.com/BVLC/caffe/blob/master/LICENSE).
-The BVLC reference models are released for unrestricted use.
-
-Please cite Caffe in your publications if it helps your research:
-
-    @article{jia2014caffe,
-      Author = {Jia, Yangqing and Shelhamer, Evan and Donahue, Jeff and Karayev, Sergey and Long, Jonathan and Girshick, Ross and Guadarrama, Sergio and Darrell, Trevor},
-      Journal = {arXiv preprint arXiv:1408.5093},
-      Title = {Caffe: Convolutional Architecture for Fast Feature Embedding},
-      Year = {2014}
-    }
+# Step 3
+Open caffe/caffe/caffe.sln and set build platform x64.
+You may need some changes in additional include/library directories.
+Finally, you can build caffe.
