@@ -35,15 +35,7 @@ class LMDBCursor : public Cursor {
   virtual bool valid() { return valid_; }
 
  private:
-  void Seek(MDB_cursor_op op) {
-    int mdb_status = mdb_cursor_get(mdb_cursor_, &mdb_key_, &mdb_value_, op);
-    if (mdb_status == MDB_NOTFOUND) {
-      valid_ = false;
-    } else {
-      MDB_CHECK(mdb_status);
-      valid_ = true;
-    }
-  }
+  void Seek(MDB_cursor_op op);
 
   MDB_txn* mdb_txn_;
   MDB_cursor* mdb_cursor_;

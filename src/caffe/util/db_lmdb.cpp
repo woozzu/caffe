@@ -27,7 +27,7 @@ void LMDB::Open(const string& source, Mode mode) {
 #ifndef _MSC_VER
     CHECK_EQ(mkdir(source.c_str(), 0744), 0) << "mkdir " << source << "failed";
 #else
-	CHECK_EQ(_mkdir(source.c_str()), 0) << "mkdir " << source << "failed";
+	  CHECK_EQ(_mkdir(source.c_str()), 0) << "mkdir " << source << "failed";
 #endif
   }
   int flags = 0;
@@ -61,6 +61,21 @@ void LMDBTransaction::Put(const string& key, const string& value) {
   mdb_value.mv_data = const_cast<char*>(value.data());
   mdb_value.mv_size = value.size();
   MDB_CHECK(mdb_put(mdb_txn_, *mdb_dbi_, &mdb_key, &mdb_value, 0));
+}
+
+void LMDBCursor::Seek(MDB_cursor_op op) {
+#ifdef _MSC_VER
+  if (op != MDB_FIRST)
+    VirtualUnlock(mdb_value_.mv_data, mdb_value_.mv_size);
+#endif
+  int mdb_status = mdb_cursor_get(mdb_cursor_, &mdb_key_, &mdb_value_, op);
+  if (mdb_status == MDB_NOTFOUND) {
+    valid_ = false;
+  }
+  else {
+    MDB_CHECK(mdb_status);
+    valid_ = true;
+  }
 }
 
 }  // namespace db
