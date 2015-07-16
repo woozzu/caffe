@@ -3,7 +3,9 @@
 Caffe is a deep learning framework made with expression, speed, and modularity in mind.
 It is developed by the Berkeley Vision and Learning Center ([BVLC](http://bvlc.eecs.berkeley.edu)) and community contributors.
 
-This branch is for Windows using Visual Studio 2013.
+This branch is for Windows and Visual Studio 2013.
+
+Most of procedures I did and 3rdparty are from Neil Shao's [blog post](https://initialneil.wordpress.com/2015/01/11/build-caffe-in-windows-with-visual-studio-2013-cuda-6-5-opencv-2-4-9/).
 
 # Step 1
 We need following external libraries to build caffe.
@@ -25,6 +27,6 @@ Checkout if following environment variables are set.
 - Path (Add D:\dev\opencv\build\x64\vc12\bin;D:\dev\caffe\3rdparty\bin)
 
 # Step 3
-Open caffe/caffe/caffe.sln and set build platform x64.
+Open caffe/caffe/caffe.sln and set build platform `x64`.
 You may need some changes in additional include/library directories.
 Finally, you can build caffe.
