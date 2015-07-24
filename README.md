@@ -22,11 +22,21 @@ https://www.dropbox.com/s/v038gymle57kn7d/3rdparty.zip?dl=0
 # Step 2
 Checkout if following environment variables are set.
 - CUDA_PATH_V7_0
-- OPENCV_HOME (like D:\dev\opencv)
-- BOOST_1_56_0 (like D:\dev\boost_1_56_0)
-- Path (Add D:\dev\opencv\build\x64\vc12\bin;D:\dev\caffe\3rdparty\bin)
+- OPENCV_HOME (like `D:\dev\opencv`)
+- BOOST_1_56_0 (like `D:\dev\boost_1_56_0`)
+- Path (add like `D:\dev\opencv\build\x64\vc12\bin;D:\dev\caffe\3rdparty\bin`)
+
+For pycaffe,
+- PYTHON_27_HOME (like `C:\Python27`)
+- PYTHONPATH (like `D:\dev\caffe\python`)
+- Path (add like `D:\dev\boost_1_56_0\lib64-msvc-12.0`)
+And, execute `scripts/GeneratePB_python.bat`.
+
+For matcaffe,
+- MATLAB_HOME (like `C:\Program Files\MATLAB\R2013b`)
+And HOME - Set Path - Add with Subfolders... `matlab`.
 
 # Step 3
-Open caffe/caffe/caffe.sln and set build platform `x64`.
+Open `caffe/caffe.sln` and set build platform `x64`.
 You may need some changes in additional include/library directories.
 Finally, you can build caffe.
