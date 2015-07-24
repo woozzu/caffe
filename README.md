@@ -30,10 +30,12 @@ For pycaffe,
 - PYTHON_27_HOME (like `C:\Python27`)
 - PYTHONPATH (like `D:\dev\caffe\python`)
 - Path (add like `D:\dev\boost_1_56_0\lib64-msvc-12.0`)
+
 And, execute `scripts/GeneratePB_python.bat`.
 
 For matcaffe,
 - MATLAB_HOME (like `C:\Program Files\MATLAB\R2013b`)
+
 And HOME - Set Path - Add with Subfolders... `matlab`.
 
 # Step 3
