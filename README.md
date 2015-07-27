@@ -40,5 +40,5 @@ And, execute `addpath matlab` in MATLAB command line.
 
 # Step 3
 Open `caffe/caffe.sln` and set `Release` mode.
-You may need some changes in additional include/library directories or another settings according to your environment.
+You may need some changes in project settings according to your environment.
 Finally, you can build caffe.
