@@ -97,7 +97,11 @@ void convert_dataset(const char* image_filename, const char* label_filename,
       datum.set_label(0);
     }
     datum.SerializeToString(&value);
+#ifndef _MSC_VER
     snprintf(key, kMaxKeyLength, "%08d", itemid);
+#else
+    sprintf_s(key, kMaxKeyLength, "%08d", itemid);
+#endif
     db->Put(leveldb::WriteOptions(), std::string(key), value);
   }
 
