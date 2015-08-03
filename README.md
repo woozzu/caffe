@@ -5,7 +5,7 @@ It is developed by the Berkeley Vision and Learning Center ([BVLC](http://bvlc.e
 
 This branch is for Windows and Visual Studio 2013.
 
-Most of procedures I did and 3rdparty are from Neil Shao's [blog post](https://initialneil.wordpress.com/2015/01/11/build-caffe-in-windows-with-visual-studio-2013-cuda-6-5-opencv-2-4-9/). If you have any problems, you may refer to the blog post. Most of issues including LMDB(+ memory-hog issue), pycaffe, matcaffe are solved in this repository.
+Most of procedures I did and 3rdparty are from Neil Shao's [blog post](https://initialneil.wordpress.com/2015/01/11/build-caffe-in-windows-with-visual-studio-2013-cuda-6-5-opencv-2-4-9/). If you have any problems, you may refer to the blog post. Most of issues including LMDB(+ memory-hog issue), pycaffe, matcaffe have been solved in this repository.
 
 # Step 1
 We need following external libraries to build caffe.
@@ -16,7 +16,7 @@ We need following external libraries to build caffe.
 - GFlags, GLog, Protobuf (in 3rdparty)
 - LevelDB, LMDB, HDF5 (in 3rdparty)
 
-You can download pre-built 3rd party libraries here.
+You can download pre-built 3rd party libraries here. You should extract 3rdparty folder to `caffe/`.
 https://www.dropbox.com/s/v038gymle57kn7d/3rdparty.zip?dl=0
 
 # Step 2
@@ -24,7 +24,7 @@ Check if following environment variables are set.
 - CUDA_PATH_V7_0
 - OPENCV_HOME (like `D:\dev\opencv`)
 - BOOST_1_56_0 (like `D:\dev\boost_1_56_0`)
-- Path (add like `D:\dev\opencv\build\x64\vc12\bin;D:\dev\caffe\3rdparty\bin`)
+- Path (add like `D:\dev\opencv\build\x64\vc12\bin;D:\dev\caffe\3rdparty\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin`)
 
 For pycaffe,
 - PYTHON_27_HOME (like `C:\Python27`)
