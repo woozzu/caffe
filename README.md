@@ -31,7 +31,7 @@ For pycaffe,
 - PYTHONPATH (add like `D:\dev\caffe\python`)
 - Path (add like `D:\dev\boost_1_56_0\lib64-msvc-12.0`)
 
-And, execute `scripts/GeneratePB_python.bat`.
+And, execute `scripts/GeneratePB_python.bat`. You should also install all python packages in `caffe/python/requirements.txt`. Most of packages can be installed by `pip`, but you may have to install some packages by yourself. For leveldb, you may refer to https://code.google.com/p/py-leveldb/issues/detail?id=12.
 
 For matcaffe,
 - MATLAB_HOME (like `C:\Program Files\MATLAB\R2014a`)
