@@ -230,6 +230,9 @@
     <ClCompile Include="..\..\src\caffe\net.cpp" />
     <ClCompile Include="..\..\src\caffe\solver.cpp" />
     <ClCompile Include="..\..\src\caffe\syncedmem.cpp" />
+    <ClCompile Include="C:\Users\SEONGH~1\AppData\Local\Temp\TortoiseGit\PatF069.tmp\src\caffe\util\hdf5.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="..\..\src\caffe\layers\base_data_layer.cu">
