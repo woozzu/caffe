@@ -5,5 +5,7 @@
     <ClCompile Include="..\..\tools\compute_image_mean.cpp" />
     <ClCompile Include="..\..\tools\convert_imageset.cpp" />
     <ClCompile Include="..\..\examples\mnist\convert_mnist_data.cpp" />
+    <ClCompile Include="..\..\examples\siamese\convert_mnist_siamese_data.cpp" />
+    <ClCompile Include="..\..\examples\cifar10\convert_cifar_data.cpp" />
   </ItemGroup>
 </Project>
