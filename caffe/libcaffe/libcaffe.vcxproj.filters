@@ -239,6 +239,9 @@
     <ClCompile Include="..\..\src\caffe\util\blocking_queue.cpp">
       <Filter>util</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\caffe\util\signal_handler.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="..\..\src\caffe\layers\base_data_layer.cu">

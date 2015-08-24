@@ -6,11 +6,16 @@
 
 #include "caffe/util/signal_handler.h"
 
+#ifdef _MSC_VER
+#include <windows.h>
+#endif
+
 namespace {
   static volatile sig_atomic_t got_sigint = false;
   static volatile sig_atomic_t got_sighup = false;
   static bool already_hooked_up = false;
 
+#ifndef _MSC_VER
   void handle_signal(int signal) {
     switch (signal) {
     case SIGHUP:
@@ -21,6 +26,16 @@ namespace {
       break;
     }
   }
+#else
+  BOOL handle_signal(DWORD signal) {
+    switch (signal) {
+    case CTRL_C_EVENT:
+      got_sigint = true;
+      return TRUE;
+    }
+    return FALSE;
+  }
+#endif
 
   void HookupHandler() {
     if (already_hooked_up) {
@@ -28,6 +43,7 @@ namespace {
     }
     already_hooked_up = true;
 
+#ifndef _MSC_VER
     struct sigaction sa;
     // Setup the handler
     sa.sa_handler = &handle_signal;
@@ -42,11 +58,17 @@ namespace {
     if (sigaction(SIGINT, &sa, NULL) == -1) {
       LOG(FATAL) << "Cannot install SIGINT handler.";
     }
+#else
+    if (!SetConsoleCtrlHandler((PHANDLER_ROUTINE)handle_signal, TRUE)) {
+      LOG(FATAL) << "Cannot install SIGINT handler.";
+    }
+#endif
   }
 
   // Set the signal handlers to the default.
   void UnhookHandler() {
     if (already_hooked_up) {
+#ifndef _MSC_VER
       struct sigaction sa;
       // Setup the sighub handler
       sa.sa_handler = SIG_DFL;
@@ -61,6 +83,11 @@ namespace {
       if (sigaction(SIGINT, &sa, NULL) == -1) {
         LOG(FATAL) << "Cannot uninstall SIGINT handler.";
       }
+#else
+      if (!SetConsoleCtrlHandler((PHANDLER_ROUTINE)handle_signal, FALSE)) {
+        LOG(FATAL) << "Cannot uninstall SIGINT handler.";
+      }
+#endif
 
       already_hooked_up = false;
     }
@@ -89,6 +116,9 @@ SignalHandler::SignalHandler(SolverAction::Enum SIGINT_action,
                              SolverAction::Enum SIGHUP_action):
   SIGINT_action_(SIGINT_action),
   SIGHUP_action_(SIGHUP_action) {
+#ifdef _MSC_VER
+  LOG(INFO) << "SIGHUP signal is ignored on Windows.";
+#endif
   HookupHandler();
 }
 
