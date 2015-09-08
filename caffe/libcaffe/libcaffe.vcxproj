@@ -39,6 +39,7 @@
     <ClCompile Include="..\..\src\caffe\layers\dropout_layer.cpp" />
     <ClCompile Include="..\..\src\caffe\layers\dummy_data_layer.cpp" />
     <ClCompile Include="..\..\src\caffe\layers\eltwise_layer.cpp" />
+    <ClCompile Include="..\..\src\caffe\layers\embed_layer.cpp" />
     <ClCompile Include="..\..\src\caffe\layers\euclidean_loss_layer.cpp" />
     <ClCompile Include="..\..\src\caffe\layers\exp_layer.cpp" />
     <ClCompile Include="..\..\src\caffe\layers\filter_layer.cpp" />
@@ -73,6 +74,7 @@
     <ClCompile Include="..\..\src\caffe\layers\spp_layer.cpp" />
     <ClCompile Include="..\..\src\caffe\layers\tanh_layer.cpp" />
     <ClCompile Include="..\..\src\caffe\layers\threshold_layer.cpp" />
+    <ClCompile Include="..\..\src\caffe\layers\tile_layer.cpp" />
     <ClCompile Include="..\..\src\caffe\layers\window_data_layer.cpp" />
     <ClCompile Include="..\..\src\caffe\layer_factory.cpp" />
     <ClCompile Include="..\..\src\caffe\net.cpp" />
@@ -110,6 +112,7 @@
     <CudaCompile Include="..\..\src\caffe\layers\deconv_layer.cu" />
     <CudaCompile Include="..\..\src\caffe\layers\dropout_layer.cu" />
     <CudaCompile Include="..\..\src\caffe\layers\eltwise_layer.cu" />
+    <CudaCompile Include="..\..\src\caffe\layers\embed_layer.cu" />
     <CudaCompile Include="..\..\src\caffe\layers\euclidean_loss_layer.cu" />
     <CudaCompile Include="..\..\src\caffe\layers\exp_layer.cu" />
     <CudaCompile Include="..\..\src\caffe\layers\filter_layer.cu" />
@@ -134,6 +137,7 @@
     <CudaCompile Include="..\..\src\caffe\layers\split_layer.cu" />
     <CudaCompile Include="..\..\src\caffe\layers\tanh_layer.cu" />
     <CudaCompile Include="..\..\src\caffe\layers\threshold_layer.cu" />
+    <CudaCompile Include="..\..\src\caffe\layers\tile_layer.cu" />
     <CudaCompile Include="..\..\src\caffe\util\im2col.cu" />
     <CudaCompile Include="..\..\src\caffe\util\math_functions.cu" />
   </ItemGroup>

@@ -242,6 +242,12 @@
     <ClCompile Include="..\..\src\caffe\util\signal_handler.cpp">
       <Filter>util</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\caffe\layers\tile_layer.cpp">
+      <Filter>layers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\caffe\layers\embed_layer.cpp">
+      <Filter>layers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="..\..\src\caffe\layers\base_data_layer.cu">
@@ -366,6 +372,12 @@
     </CudaCompile>
     <CudaCompile Include="..\..\src\caffe\util\math_functions.cu">
       <Filter>util</Filter>
+    </CudaCompile>
+    <CudaCompile Include="..\..\src\caffe\layers\embed_layer.cu">
+      <Filter>layers</Filter>
+    </CudaCompile>
+    <CudaCompile Include="..\..\src\caffe\layers\tile_layer.cu">
+      <Filter>layers</Filter>
     </CudaCompile>
   </ItemGroup>
 </Project>
