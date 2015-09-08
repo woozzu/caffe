@@ -9,7 +9,7 @@ Most of procedures I did and 3rdparty are from Neil Shao's [blog post](https://i
 
 # Step 1
 We need following external libraries to build caffe.
-- CUDA 7.0 + cuDNN
+- CUDA 7.0 + cuDNNv3
 - OpenCV 2.4.8
 - [Boost 1.56](http://sourceforge.net/projects/boost/files/boost-binaries/1.56.0/boost_1_56_0-msvc-12.0-64.exe/download)
 - OpenBLAS (in 3rdparty)
