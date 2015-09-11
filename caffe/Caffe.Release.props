@@ -5,7 +5,7 @@
   <PropertyGroup />
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\3rdparty\include\lmdb;..\..\3rdparty\include\hdf5;..\..\3rdparty\include\openblas;..\..\3rdparty\include;$(BOOST_1_56_0);$(OPENCV_HOME)\build\include\opencv;$(OPENCV_HOME)\build\include;$(CUDA_PATH_V7_0)\include;..\..\src;..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\3rdparty\include\lmdb;..\..\3rdparty\include\hdf5;..\..\3rdparty\include\openblas;..\..\3rdparty\include;$(BOOST_1_56_0);$(OPENCV_HOME)\build\include\opencv;$(OPENCV_HOME)\build\include;$(CUDA_PATH_V7_5)\include;..\..\src;..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;USE_CUDNN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <CudaCompile>
@@ -13,8 +13,8 @@
       <CodeGeneration>compute_50,sm_50</CodeGeneration>
     </CudaCompile>
     <Link>
-      <AdditionalLibraryDirectories>..\..\3rdparty\lib;$(BOOST_1_56_0)\lib64-msvc-12.0;$(OPENCV_HOME)\build\x64\vc12\lib;$(CUDA_PATH_V7_0)\lib\$(PlatformName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_core248.lib;opencv_flann248.lib;opencv_imgproc248.lib;opencv_highgui248.lib;opencv_legacy248.lib;opencv_video248.lib;opencv_ml248.lib;opencv_calib3d248.lib;opencv_objdetect248.lib;opencv_stitching248.lib;opencv_gpu248.lib;opencv_nonfree248.lib;opencv_features2d248.lib;cudart.lib;cuda.lib;nppi.lib;cufft.lib;cublas.lib;curand.lib;gflags.lib;libglog.lib;libopenblas.dll.a;libprotobuf.lib;libprotoc.lib;leveldb.lib;libhdf5.lib;libhdf5_hl.lib;Shlwapi.lib;cudnn.lib;cudnn64_65.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\3rdparty\lib;$(BOOST_1_56_0)\lib64-msvc-12.0;$(OPENCV_HOME)\build\x64\vc12\lib;$(CUDA_PATH_V7_5)\lib\$(PlatformName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_ts300.lib;opencv_world300.lib;cudart.lib;cuda.lib;nppi.lib;cufft.lib;cublas.lib;curand.lib;gflags.lib;libglog.lib;libopenblas.dll.a;libprotobuf.lib;libprotoc.lib;leveldb.lib;libhdf5.lib;libhdf5_hl.lib;Shlwapi.lib;cudnn.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>"..\..\scripts\GeneratePB.bat"</Command>

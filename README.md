@@ -9,8 +9,8 @@ Most of procedures I did and 3rdparty are from Neil Shao's [blog post](https://i
 
 # Step 1
 We need following external libraries to build caffe.
-- CUDA 7.0 + cuDNNv3
-- OpenCV 2.4.8
+- CUDA 7.5 + cuDNN v3
+- OpenCV 3.0.0
 - [Boost 1.56](http://sourceforge.net/projects/boost/files/boost-binaries/1.56.0/boost_1_56_0-msvc-12.0-64.exe/download)
 - OpenBLAS (in 3rdparty)
 - GFlags, GLog, Protobuf (in 3rdparty)
@@ -21,10 +21,10 @@ https://www.dropbox.com/s/v038gymle57kn7d/3rdparty.zip?dl=0
 
 # Step 2
 Check if following environment variables are set.
-- CUDA_PATH_V7_0
+- CUDA_PATH_V7_5
 - OPENCV_HOME (like `D:\dev\opencv`)
 - BOOST_1_56_0 (like `D:\dev\boost_1_56_0`)
-- Path (add like `D:\dev\opencv\build\x64\vc12\bin;D:\dev\caffe\3rdparty\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin`)
+- Path (add like `D:\dev\opencv\build\x64\vc12\bin;D:\dev\caffe\3rdparty\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin`)
 
 For pycaffe,
 - PYTHON_27_HOME (like `C:\Python27`)
