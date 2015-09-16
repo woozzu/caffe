@@ -17,7 +17,7 @@ We need following external libraries to build caffe.
 - LevelDB, LMDB, HDF5 (in 3rdparty)
 
 You can download pre-built 3rd party libraries here. You should extract 3rdparty folder to `caffe/`.
-https://www.dropbox.com/s/v038gymle57kn7d/3rdparty.zip?dl=0
+https://www.dropbox.com/s/v038gymle57kn7d/3rdparty.zip?dl=0 (Modified in Sept. 16, 2015)
 
 # Step 2
 Check if following environment variables are set.
