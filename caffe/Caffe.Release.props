@@ -6,7 +6,7 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\3rdparty\include\lmdb;..\..\3rdparty\include\hdf5;..\..\3rdparty\include\openblas;..\..\3rdparty\include;$(BOOST_1_56_0);$(OPENCV_HOME)\build\include\opencv;$(OPENCV_HOME)\build\include;$(CUDA_PATH_V7_5)\include;..\..\src;..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;USE_CUDNN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;USE_CUDNN;USE_OPENCV;USE_LMDB;USE_LEVELDB;USE_HDF5;USE_SNAPPY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>

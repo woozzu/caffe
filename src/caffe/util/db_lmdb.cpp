@@ -1,3 +1,4 @@
+#ifdef USE_LMDB
 #include "caffe/util/db_lmdb.hpp"
 
 #include <sys/stat.h>
@@ -73,3 +74,4 @@ void LMDBCursor::Seek(MDB_cursor_op op) {
 
 }  // namespace db
 }  // namespace caffe
+#endif  // USE_LMDB
