@@ -20,6 +20,7 @@
 #include "caffe/util/io.hpp"
 
 #ifdef _MSC_VER
+#include "io.h"
 #define open _open
 #endif
 

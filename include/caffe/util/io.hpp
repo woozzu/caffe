@@ -1,12 +1,11 @@
 #ifndef CAFFE_UTIL_IO_H_
 #define CAFFE_UTIL_IO_H_
 
-#include <unistd.h>
+#include <boost/filesystem.hpp>
 #include <string>
 
 #include "google/protobuf/message.h"
 
-#include "caffe/blob.hpp"
 #include "caffe/common.hpp"
 #include "caffe/proto/caffe.pb.h"
 #include "mkstemp.h"
@@ -14,39 +13,22 @@
 namespace caffe {
 
 using ::google::protobuf::Message;
+using ::boost::filesystem::path;
 
 inline void MakeTempFilename(string* temp_filename) {
   temp_filename->clear();
-  *temp_filename = "/tmp/caffe_test.XXXXXX";
-  char* temp_filename_cstr = new char[temp_filename->size() + 1];
-  // NOLINT_NEXT_LINE(runtime/printf)
-  strcpy(temp_filename_cstr, temp_filename->c_str());
-  int fd = mkstemp(temp_filename_cstr);
-  CHECK_GE(fd, 0) << "Failed to open a temporary file at: " << *temp_filename;
-#ifndef _MSC_VER
-  close(fd);
-#else
-  _close(fd);
-#endif
-  *temp_filename = temp_filename_cstr;
-  delete[] temp_filename_cstr;
-}
+  const path& model = boost::filesystem::temp_directory_path()
+    /"caffe_test.%%%%%%";
+  *temp_filename = boost::filesystem::unique_path(model).string();}
 
 inline void MakeTempDir(string* temp_dirname) {
   temp_dirname->clear();
-  *temp_dirname = "/tmp/caffe_test.XXXXXX";
-  char* temp_dirname_cstr = new char[temp_dirname->size() + 1];
-  // NOLINT_NEXT_LINE(runtime/printf)
-  strcpy(temp_dirname_cstr, temp_dirname->c_str());
-#ifndef _MSC_VER
-  char* mkdtemp_result = mkdtemp(temp_dirname_cstr);
-#else
-  errno_t mkdtemp_result = _mktemp_s(temp_dirname_cstr, sizeof(temp_dirname_cstr));
-#endif
-  CHECK(mkdtemp_result != NULL)
-      << "Failed to create a temporary directory at: " << *temp_dirname;
-  *temp_dirname = temp_dirname_cstr;
-  delete[] temp_dirname_cstr;
+  const path& model = boost::filesystem::temp_directory_path()
+    /"caffe_test.%%%%%%";
+  const path& dir = boost::filesystem::unique_path(model).string();
+  bool directoryCreated = boost::filesystem::create_directory(dir);
+  CHECK(directoryCreated);
+  *temp_dirname = dir.string();
 }
 
 bool ReadProtoFromTextFile(const char* filename, Message* proto);

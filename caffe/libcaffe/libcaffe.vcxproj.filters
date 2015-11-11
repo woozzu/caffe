@@ -16,6 +16,9 @@
     <Filter Include="util">
       <UniqueIdentifier>{a46bc1a1-3f07-404b-850d-11e780809814}</UniqueIdentifier>
     </Filter>
+    <Filter Include="solvers">
+      <UniqueIdentifier>{63d98a55-fe0c-44af-a376-f49643571aeb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\caffe\layers\bnll_layer.cpp">
@@ -248,6 +251,36 @@
     <ClCompile Include="..\..\src\caffe\layers\embed_layer.cpp">
       <Filter>layers</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\caffe\layers\batch_reindex_layer.cpp">
+      <Filter>layers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\caffe\layers\batch_norm_layer.cpp">
+      <Filter>layers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\caffe\layers\cudnn_lrn_layer.cpp">
+      <Filter>layers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\caffe\layers\cudnn_lcn_layer.cpp">
+      <Filter>layers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\caffe\solvers\adam_solver.cpp">
+      <Filter>solvers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\caffe\solvers\nesterov_solver.cpp">
+      <Filter>solvers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\caffe\solvers\rmsprop_solver.cpp">
+      <Filter>solvers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\caffe\solvers\sgd_solver.cpp">
+      <Filter>solvers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\caffe\solvers\adadelta_solver.cpp">
+      <Filter>solvers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\caffe\solvers\adagrad_solver.cpp">
+      <Filter>solvers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="..\..\src\caffe\layers\base_data_layer.cu">
@@ -377,6 +410,18 @@
       <Filter>layers</Filter>
     </CudaCompile>
     <CudaCompile Include="..\..\src\caffe\layers\tile_layer.cu">
+      <Filter>layers</Filter>
+    </CudaCompile>
+    <CudaCompile Include="..\..\src\caffe\layers\batch_reindex_layer.cu">
+      <Filter>layers</Filter>
+    </CudaCompile>
+    <CudaCompile Include="..\..\src\caffe\layers\batch_norm_layer.cu">
+      <Filter>layers</Filter>
+    </CudaCompile>
+    <CudaCompile Include="..\..\src\caffe\layers\cudnn_lrn_layer.cu">
+      <Filter>layers</Filter>
+    </CudaCompile>
+    <CudaCompile Include="..\..\src\caffe\layers\cudnn_lcn_layer.cu">
       <Filter>layers</Filter>
     </CudaCompile>
   </ItemGroup>
